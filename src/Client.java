@@ -24,17 +24,20 @@ public class Client {
         int min = Integer.MAX_VALUE;
         int counter = 0;
         int minValue = 0;
-        Levenshtein levenshtein = new Levenshtein();
-        try (BufferedReader br = new BufferedReader(new FileReader(url.toString()))) {
+        Levenshtein levenshtein = new Levenshtein(url,value);
+
+       /* try (BufferedReader br = new BufferedReader(new FileReader(url.toString()))) {
             String line;
             while ((line = br.readLine()) != null) {
+                ++counter;
                 int temp = levenshtein.getDist(line, value);
                 if (min > temp) {
                     min = temp;
-                    minValue = ++counter;
+                    minValue = counter;
                 }
             }
         } catch (IOException e) {e.printStackTrace();}
-        return minValue;
+        return minValue;*/
+       return levenshtein.getDisttance(url,value);
     }
 }
